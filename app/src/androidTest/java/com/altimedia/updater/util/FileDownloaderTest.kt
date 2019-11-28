@@ -1,18 +1,16 @@
-package com.altimedia.updater
+package com.altimedia.updater.util
 
 import android.content.Context
 import androidx.test.filters.SmallTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.platform.app.InstrumentationRegistry
 import com.altimedia.updater.test.R
-import com.altimedia.updater.util.FileDownloader
-import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
 import org.junit.runner.RunWith
-import java.lang.String
 import java.nio.file.Files
 import java.nio.file.Paths
 
@@ -25,10 +23,11 @@ class FileDownloaderTest {
 
     @Rule
     @JvmField
-    val thrown = ExpectedException.none()
+    val thrown:ExpectedException? = ExpectedException.none()
 
     private lateinit var mTestContext: Context
     private lateinit var mTargetContext: Context
+
     @Before
     fun setUp() {
         mTestContext =
@@ -57,9 +56,8 @@ class FileDownloaderTest {
         // download a chunk of ota.zip
         val downloader = FileDownloader(url, 1674, 12, outFile)
         downloader.download()
-        val downloadedContent =
-            String.join("\n", Files.readAllLines(outFile.toPath()))
+        val downloadedContent = Files.readAllLines(outFile.toPath()).joinToString("\n")
         // archive contains text files with uppercase filenames
-        Assert.assertEquals("CARE_MAP-TXT", downloadedContent)
+        assertEquals("CARE_MAP-TXT", downloadedContent)
     }
 }
