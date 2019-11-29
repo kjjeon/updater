@@ -1,4 +1,4 @@
-package com.altimedia.updater.data.core
+package com.altimedia.updater.domain.state
 
 import android.util.SparseArray
 import java.util.concurrent.atomic.AtomicInteger

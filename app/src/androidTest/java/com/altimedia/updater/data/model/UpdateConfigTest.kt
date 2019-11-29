@@ -1,4 +1,4 @@
-package com.altimedia.updater.data.core
+package com.altimedia.updater.data.model
 
 import android.content.Context
 import androidx.test.filters.SmallTest

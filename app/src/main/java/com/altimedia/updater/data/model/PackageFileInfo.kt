@@ -1,7 +1,7 @@
 package com.altimedia.updater.data.model
 
 /** Utility class for an OTA package.  */
-class PackageFiles {
+class PackageFileInfo {
 
     companion object {
         /**

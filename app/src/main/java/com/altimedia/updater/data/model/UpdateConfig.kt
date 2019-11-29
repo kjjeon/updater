@@ -1,16 +1,15 @@
-package com.altimedia.updater.data.core
+package com.altimedia.updater.data.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.altimedia.updater.data.model.AbConfig
-import com.altimedia.updater.data.model.PackageFile
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
+import java.lang.NullPointerException
 import java.util.*
 
 data class UpdateConfig (
-    var name: String? = "",
+    var name: String = "",
     var url: String? = "",
     var abInstallType: Int = AB_INSTALL_TYPE_NON_STREAMING,
     var abConfig: AbConfig? = null,
@@ -35,7 +34,7 @@ data class UpdateConfig (
     }
 
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
+        parcel.readString() ?: "",
         parcel.readString(),
         parcel.readInt(),
         parcel.readSerializable() as AbConfig,
