@@ -1,10 +1,12 @@
 package com.altimedia.updater.data.model
 
+import java.io.Serializable
+
 class PayloadSpec private constructor(
     val url: String,
     val offset: Long,
     val size: Long,
-    val properties: List<String>) {
+    val properties: List<String>) : Serializable {
 
 
     private constructor(builder: Builder) : this(builder.url, builder.offset, builder.size, builder.properties)

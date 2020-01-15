@@ -5,12 +5,11 @@ import android.os.Parcelable
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
-import java.lang.NullPointerException
 import java.util.*
 
 data class UpdateConfig (
     var name: String = "",
-    var url: String? = "",
+    var url: String = "",
     var abInstallType: Int = AB_INSTALL_TYPE_NON_STREAMING,
     var abConfig: AbConfig? = null,
     var rawJson: String? = "") : Parcelable {
@@ -18,24 +17,19 @@ data class UpdateConfig (
     /**
      * @return File object for given url
      */
-    fun getUpdatePackageFile(): File? {
+    fun getUpdatePackageFile(): File {
         if (abInstallType != AB_INSTALL_TYPE_NON_STREAMING) {
             throw RuntimeException("Expected non-streaming install type")
         }
-        url.also { url -> requireNotNull(url) }
-            ?.let {
-                if (!it.startsWith("file://")) {
-                    throw RuntimeException("url is expected to start with file://")
-                }
-                return File(it.substring(7, it.length))
-            }
-
-        return null
+        if (!url.startsWith("file://")) {
+            throw RuntimeException("url is expected to start with file://")
+        }
+        return File(url.substring(7, url.length))
     }
 
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
-        parcel.readString(),
+        parcel.readString() ?: "",
         parcel.readInt(),
         parcel.readSerializable() as AbConfig,
         parcel.readString()

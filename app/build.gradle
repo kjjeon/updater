@@ -1,3 +1,5 @@
+import groovy.xml.XmlUtil
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -21,9 +23,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
+    compileOnly files('../libplatform/ext-libs/android_q.jar')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -46,4 +53,6 @@ dependencies {
     androidTestImplementation 'androidx.test:core:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation "org.mockito:mockito-android:3.1.0"
+    implementation project(path: ':libplatform')
 }
+

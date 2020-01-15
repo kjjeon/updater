@@ -1,5 +1,6 @@
 package com.altimedia.updater
 
+import org.junit.Assert
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,11 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+
+//        val p: List<String> = emptyList()
+//        val test = p.firstOrNull{ it == "aaa" } ?: "a"
+//        println("test $test")
+//        assertEquals("aaa", test)
+
     }
 }

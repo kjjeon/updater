@@ -25,10 +25,7 @@ class UpdateConfigFactory {
          * @return configs root directory
          */
         fun getConfigsRoot(context: Context) =
-            Paths.get(
-                context.filesDir.toString(),
-                UPDATE_CONFIGS_ROOT
-            ).toString()
+            Paths.get(context.filesDir.toString(), UPDATE_CONFIGS_ROOT).toString()
 
         /**
          * @param context application context
@@ -77,6 +74,6 @@ class UpdateConfigFactory {
          *         stored as {@link UpdateConfig.PackageFile}.
          */
         fun getPropertyFile(fileName: String, config: UpdateConfig): PackageFile? =
-            config.abConfig?.propertyFiles?.first { file -> fileName == file.filename }
+            config.abConfig?.propertyFiles?.firstOrNull { file -> fileName == file.filename }
     }
 }

@@ -21,6 +21,12 @@ allprojects {
         jcenter()
         
     }
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs.add('-Xbootclasspath/p:libplatform/ext-libs/android_q.jar')
+        }
+    }
 }
 
 task clean(type: Delete) {

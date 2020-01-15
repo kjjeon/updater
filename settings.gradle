@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':libplatform'
 rootProject.name='updater'

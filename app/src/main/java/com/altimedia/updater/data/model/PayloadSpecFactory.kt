@@ -27,8 +27,7 @@ class PayloadSpecFactory {
             var payloadFound = false
             var payloadOffset: Long = 0
             var payloadSize: Long = 0
-            val properties: MutableList<String> =
-                ArrayList()
+            val properties: MutableList<String> = mutableListOf()
             ZipFile(packageFile).use { zip ->
                 val entries = zip.entries()
                 var offset: Long = 0
