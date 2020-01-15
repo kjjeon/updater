@@ -49,6 +49,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:2.25.0'
     testImplementation 'junit:junit:4.12'
 
+    //guava
+    implementation("com.google.guava:guava:28.2-android")
+    api("com.google.guava:guava:28.2-android")
 
     androidTestImplementation 'androidx.test:core:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
